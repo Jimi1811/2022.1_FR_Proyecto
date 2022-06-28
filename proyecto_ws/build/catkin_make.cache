@@ -1,0 +1,2 @@
+FDRP
+-DCATKIN_DEVEL_PREFIX=/home/jim/FR_Proyecto_2022-1/proyecto_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jim/FR_Proyecto_2022-1/proyecto_ws/install -G Unix Makefiles
