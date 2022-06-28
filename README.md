@@ -8,4 +8,4 @@ Para poder usar el proyecto en RDS:
 
 2. Colocar al inicio en terminal 
   
-  $ source proyecto_ws/devel/setup.bash
+  $ source FR_Proyecto_2022-1/proyecto_ws/devel/setup.bash
