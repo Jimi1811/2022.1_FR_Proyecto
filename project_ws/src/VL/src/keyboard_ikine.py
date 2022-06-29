@@ -40,7 +40,7 @@ if __name__ == '__main__':
     xdes = T[0:3,3]
  
     deltax = [0, 0, 0]
-    l_max = 0.0892 + 0.425 + 0.392 + 0.09475
+    l_max = 0.954 + 0.2
  
     # Object (message) whose type is JointState
     jstate = JointState()
@@ -70,22 +70,22 @@ if __name__ == '__main__':
             deltax[0] = -0.02
  
         # y+
-        elif (press_key == 'd'):
+        elif (press_key == 'a'):
             print 'Input:', press_key
             deltax[1] = 0.02
  
         # y-
-        elif (press_key == 'a'):
+        elif (press_key == 'd'):
             print 'Input:', press_key
             deltax[1] = -0.02
  
         # z+
-        elif (press_key == 'f'):
+        elif (press_key == 'r'):
             print 'Input:', press_key
             deltax[2] = 0.02
  
         # z-
-        elif (press_key == 'r'):
+        elif (press_key == 'f'):
             print 'Input:', press_key
             deltax[2] = -0.02
  
