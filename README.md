@@ -1,9 +1,9 @@
 # FR_Proyecto_2022-1
 Proyecto de curso Fundamentos de Robótica 2022-1
 
-Robot manipulador en URDF: https://github.com/cian777/VL
+* Robot manipulador en URDF: https://github.com/cian777/VL
 
-Para poder usar el proyecto en RDS: 
+* Para poder usar el proyecto en RDS: 
 
 1. Clonar este repositorio en ~/
 
@@ -16,3 +16,5 @@ Para poder usar el proyecto en RDS:
 3. Para correr en RViz
 
   $ roslaunch VL_description display.launch
+
+* Para entrar cada uno a su rama: https://www.youtube.com/watch?v=tFr0Vg1q9Eg
