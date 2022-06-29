@@ -50,7 +50,7 @@ def dh(d, theta, a, alpha):
 # ----------------------------------
 # Cinematica directa
 
-def rhexa_fkine(q):
+def VL_fkine(q):
 
     """
     Calcular la cinematica directa del robot UR5 dados sus valores articulares. 
@@ -73,13 +73,13 @@ def rhexa_fkine(q):
 # ----------------------------------
 # Jacobiano de posicion
 
-def jacobian_position(q, delta):
-    # delta=0.0001
+def jacobian_position(q):
+    delta=0.0001
 
     # Crear una matriz 3x6
     J = np.zeros((3, 6))
     # Transformacion homogenea inicial (usando q)
-    To = fkine(q)
+    To = VL_fkine(q)
     To = To[0:3, -1:] # vector posicion
 
     # Iteracion para la derivada de cada columna
@@ -89,7 +89,7 @@ def jacobian_position(q, delta):
         # Incrementar la articulacion i-esima usando un delta
         dq[i] = dq[i]+delta
         # Transformacion homogenea luego del incremento (q+delta)
-        T = fkine(dq)
+        T = VL_fkine(dq)
         T = T[0:3, -1:] # vector posicion
         # Aproximacion del Jacobiano de posicion usando diferencias finitas
         Jq = 1/delta*(T-To)
@@ -100,7 +100,7 @@ def jacobian_position(q, delta):
 # ----------------------------------
 # Cinematica inversa
 
-def ikine_ur5(xdes, q0):
+def VL_ikine(xdes, q0):
     # Error
     epsilon = 0.001
     # Maximas iteraciones
@@ -112,7 +112,7 @@ def ikine_ur5(xdes, q0):
     # Almacenamiento del error
     ee = []
     # Transformacion homogenea (usando q)
-    To = fkine_ur5(q)
+    To = VL_fkine(q)
     To = To[0:3, 3] # vector posicion
     # Resetear cuando se llega a la cantidad maxima de iteraciones
     restart = True
@@ -122,14 +122,14 @@ def ikine_ur5(xdes, q0):
             # Hacer el for 1 vez
             restart = False
             # Pseudo-inversa del jacobiano
-            J = jacobian_ur5(q, delta)
+            J = jacobian_position(q, delta)
             J = np.linalg.pinv(J)
             # Error entre el x deseado y x actual
             e = xdes - To
             # q_k+1
             q = q + np.dot(J,e)
             # Nueva mtransformada homogenea
-            To = fkine_ur5(q)
+            To = VL_fkine(q)
             To = To[0:3, 3] # vector posicion
 
             # Norma del error
