@@ -31,7 +31,6 @@ pi = np.pi
 # Matriz de transformacion homogenea
 
 def dh(d, theta, a, alpha):
-
     """
     Matriz de transformacion homogenea asociada a los parametros DH.
     Retorna una matriz 4x4
@@ -39,31 +38,31 @@ def dh(d, theta, a, alpha):
 
     sth = np.sin(theta)
     cth = np.cos(theta)
-    sa  = np.sin(alpha)
-    ca  = np.cos(alpha)
+    sa = np.sin(alpha)
+    ca = np.cos(alpha)
     T = np.array([[cth, -ca*sth,  sa*sth, a*cth],
-                   [sth,  ca*cth, -sa*cth, a*sth],
-                   [0.0,      sa,      ca,     d],
-                   [0.0,     0.0,     0.0,   1.0]])
+                  [sth,  ca*cth, -sa*cth, a*sth],
+                  [0.0,      sa,      ca,     d],
+                  [0.0,     0.0,     0.0,   1.0]])
     return T
 
 # ----------------------------------
 # Cinematica directa
 
-def fkine(q):
 
+def fkine(q):
     """
     Calcular la cinematica directa del robot UR5 dados sus valores articulares. 
     q es un vector numpy de la forma [q1, q2, q3, q4, q5, q6]
     """
 
     # Matrices DH
-    T1 = dh( 0.0892,        q[0],     0, pi/2)
-    T2 = dh(      0, q[1]+2*pi/2, 0.425,    0)
-    T3 = dh(      0,        q[2], 0.392,    0)
-    T4 = dh( 0.1093, q[3]+2*pi/2,     0, pi/2)
-    T5 = dh(0.09475,     q[4]+pi,     0, pi/2)
-    T6 = dh( 0.0825,        q[5],     0,    0)
+    T1 = dh(  0.126223,       q[0],  0.035737, pi/2)
+    T2 = dh(    0.0175,  q[1]-pi/2,         0, pi/2)
+    T3 = dh(    -0.534,       q[2],         0, pi/2)
+    T4 = dh(    0.0995,       q[3],         0, pi/2)
+    T5 = dh(0.355+q[4],          0,         0,   pi)
+    T6 = dh(    -0.029,       q[5],         0,    0)
 
     # Efector final con respecto a la base
     T = T1.dot(T2).dot(T3).dot(T4).dot(T5).dot(T6)
@@ -73,14 +72,15 @@ def fkine(q):
 # ----------------------------------
 # Jacobiano de posicion
 
+
 def jacobian_position(q):
-    delta=0.0001
+    delta = 0.0001
 
     # Crear una matriz 3x6
     J = np.zeros((3, 6))
     # Transformacion homogenea inicial (usando q)
     To = fkine(q)
-    To = To[0:3, -1:] # vector posicion
+    To = To[0:3, -1:]  # vector posicion
 
     # Iteracion para la derivada de cada columna
     for i in range(6):
@@ -90,7 +90,7 @@ def jacobian_position(q):
         dq[i] = dq[i]+delta
         # Transformacion homogenea luego del incremento (q+delta)
         T = fkine(dq)
-        T = T[0:3, -1:] # vector posicion
+        T = T[0:3, -1:]  # vector posicion
         # Aproximacion del Jacobiano de posicion usando diferencias finitas
         Jq = 1/delta*(T-To)
         J[:, i:i+1] = Jq
@@ -99,6 +99,7 @@ def jacobian_position(q):
 
 # ----------------------------------
 # Cinematica inversa
+
 
 def ikine(xdes, q0):
     # Error
@@ -113,7 +114,7 @@ def ikine(xdes, q0):
     ee = []
     # Transformacion homogenea (usando q)
     To = fkine(q)
-    To = To[0:3, 3] # vector posicion
+    To = To[0:3, 3]  # vector posicion
     # Resetear cuando se llega a la cantidad maxima de iteraciones
     restart = True
 
@@ -122,25 +123,25 @@ def ikine(xdes, q0):
             # Hacer el for 1 vez
             restart = False
             # Pseudo-inversa del jacobiano
-            J = jacobian_position(q, delta)
+            J = jacobian_position(q)
             J = np.linalg.pinv(J)
             # Error entre el x deseado y x actual
             e = xdes - To
             # q_k+1
-            q = q + np.dot(J,e)
+            q = q + np.dot(J, e)
             # Nueva mtransformada homogenea
             To = fkine(q)
-            To = To[0:3, 3] # vector posicion
+            To = To[0:3, 3]  # vector posicion
 
             # Norma del error
             enorm = np.linalg.norm(e)
             ee.append(enorm)    # Almacena los errores
             # Condicion de termino
             if (enorm < epsilon):
-                print("Error en la iteracion ",i, ": ", np.round(enorm,4))
+                print("Error en la iteracion ", i, ": ", np.round(enorm, 4))
                 break
-            if (i==max_iter-1 and enorm > epsilon):
+            if (i == max_iter-1 and enorm > epsilon):
                 print("Iteracion se repite")
-                print("Error en la iteracion ",i, ": ", enorm)
+                print("Error en la iteracion ", i, ": ", enorm)
             restart = True
     return q

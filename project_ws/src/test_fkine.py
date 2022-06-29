@@ -2,6 +2,8 @@
 import rospy
 from sensor_msgs.msg import JointState
 
+import numpy as np
+
 from markers import *
 from functions import *
 
@@ -10,7 +12,7 @@ pub = rospy.Publisher('joint_states', JointState, queue_size=1)
 bmarker = BallMarker(color['GREEN'])
 
 # Joint names
-jnames = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint','wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint']
+jnames = ['waist_q1', 'shoulder_q2', 'revolution_q3','elbow_q4', 'slider_q5', 'wrist_q6']
 # Joint Configuration
 q = [0, 0, 0, 0, 0, 0]
 

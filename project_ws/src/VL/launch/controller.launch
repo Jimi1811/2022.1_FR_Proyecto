@@ -1,7 +1,7 @@
 <launch>
 
 <rosparam file="$(find VL_description)/launch/controller.yaml" command="load"/>
-<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="VL" args="Revolución2_position_controller Revolución3_position_controller Revolución4_position_controller Revolución5_position_controller Corredera6_position_controller Revolución7_position_controller joint_state_controller "/>
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="VL" args="waist_q1_position_controller shoulder_q2_position_controller revolution_q3_position_controller elbow_q4_position_controller slider_q5_position_controller wrist_q6_position_controller joint_state_controller "/>
 <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
   <remap from="/joint_states" to="/VL/joint_states"/>
 </node>

@@ -1,67 +1,67 @@
 <?xml version="1.0" ?>
 <robot name="VL" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-<transmission name="shoulder_pan_joint_tran">
+<transmission name="waist_q1_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="shoulder_pan_joint">
+  <joint name="waist_q1">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="shoulder_pan_joint_actr">
+  <actuator name="waist_q1_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="shoulder_lift_joint_tran">
+<transmission name="shoulder_q2_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="shoulder_lift_joint">
+  <joint name="shoulder_q2">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="shoulder_lift_joint_actr">
+  <actuator name="shoulder_q2_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="elbow_joint_tran">
+<transmission name="revolution_q3_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="elbow_joint">
+  <joint name="revolution_q3">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="elbow_joint_actr">
+  <actuator name="revolution_q3_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="wrist_1_joint_tran">
+<transmission name="elbow_q4_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="wrist_1_joint">
+  <joint name="elbow_q4">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="wrist_1_joint_actr">
+  <actuator name="elbow_q4_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="wrist_2_joint_tran">
+<transmission name="slider_q5_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="wrist_2_joint">
+  <joint name="slider_q5">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="wrist_2_joint_actr">
+  <actuator name="slider_q5_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
 
-<transmission name="wrist_3_joint_tran">
+<transmission name="wrist_q6_tran">
   <type>transmission_interface/SimpleTransmission</type>
-  <joint name="wrist_3_joint">
+  <joint name="wrist_q6">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
-  <actuator name="wrist_3_joint_actr">
+  <actuator name="wrist_q6_actr">
     <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
