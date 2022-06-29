@@ -172,13 +172,13 @@
   </collision>
 </link>
 
-<joint name="Rígida1" type="fixed">
+<joint name="Rigida1" type="fixed">
   <origin xyz="0.0 0.0 0.07" rpy="0 0 0"/>
   <parent link="base_link"/>
   <child link="Componente5_1"/>
 </joint>
 
-<joint name="Revolución2" type="revolute">
+<joint name="Revolucion2" type="revolute">
   <origin xyz="0.0 0.0 0.02" rpy="0 0 0"/>
   <parent link="Componente5_1"/>
   <child link="q1_1"/>
@@ -186,7 +186,7 @@
   <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="Revolución3" type="revolute">
+<joint name="Revolucion3" type="revolute">
   <origin xyz="-0.0045 0.035737 0.036223" rpy="0 0 0"/>
   <parent link="q1_1"/>
   <child link="q2_1"/>
@@ -194,7 +194,7 @@
   <limit upper="3.141593" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="Revolución4" type="revolute">
+<joint name="Revolucion4" type="revolute">
   <origin xyz="0.022 0.39 1.7e-05" rpy="0 0 0"/>
   <parent link="q2_1"/>
   <child link="q3_1"/>
@@ -202,7 +202,7 @@
   <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="Revolución5" type="revolute">
+<joint name="Revolucion5" type="revolute">
   <origin xyz="-0.073 0.144 7e-06" rpy="0 0 0"/>
   <parent link="q3_1"/>
   <child link="q4_1"/>
@@ -218,7 +218,7 @@
   <limit upper="0.24" lower="0.0" effort="100" velocity="100"/>
 </joint>
 
-<joint name="Revolución7" type="revolute">
+<joint name="Revolucion7" type="revolute">
   <origin xyz="0.0 0.27 1.2e-05" rpy="0 0 0"/>
   <parent link="q5_1"/>
   <child link="q6_1"/>

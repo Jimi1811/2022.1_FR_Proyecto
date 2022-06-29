@@ -1,0 +1,8 @@
+prefix=/home/user/FR_Proyecto_2022-1/project_ws/devel
+
+Name: VL_description
+Description: Description of VL_description
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

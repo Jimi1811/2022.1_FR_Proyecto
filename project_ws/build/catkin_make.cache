@@ -1,0 +1,2 @@
+VL
+-DCATKIN_DEVEL_PREFIX=/home/user/FR_Proyecto_2022-1/project_ws/devel -DCMAKE_INSTALL_PREFIX=/home/user/FR_Proyecto_2022-1/project_ws/install -G Unix Makefiles
