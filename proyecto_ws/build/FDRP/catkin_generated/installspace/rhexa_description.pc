@@ -1,8 +1,0 @@
-prefix=/home/jim/FR_Proyecto_2022-1/proyecto_ws/install
-
-Name: rhexa_description
-Description: Description of rhexa_description
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

@@ -1,0 +1,229 @@
+<?xml version="1.0" ?>
+<robot name="VL" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find VL_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find VL_description)/urdf/VL.trans" />
+<xacro:include filename="$(find VL_description)/urdf/VL.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="3.019715383457247e-11 3.0286398058123193e-12 0.04300979484933489" rpy="0 0 0"/>
+    <mass value="4.071597447876389"/>
+    <inertia ixx="0.006647" iyy="0.00646" izz="0.007974" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="Componente5_1">
+  <inertial>
+    <origin xyz="-6.551741014804067e-15 0.0 -0.029302995324400033" rpy="0 0 0"/>
+    <mass value="1.4329758168878506"/>
+    <inertia ixx="0.00077" iyy="0.0009" izz="0.000718" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/Componente5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.07" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/Componente5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="q1_1">
+  <inertial>
+    <origin xyz="-0.004888834987006494 0.007815175841509137 0.017771527603799395" rpy="0 0 0"/>
+    <mass value="0.4353288415386871"/>
+    <inertia ixx="0.000191" iyy="0.000139" izz="0.00023" ixy="4.4e-05" iyz="-5.1e-05" ixz="2.6e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0 -0.0 -0.09" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0 -0.0 -0.09" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="q2_1">
+  <inertial>
+    <origin xyz="0.02095807578536191 0.18109836981288438 8.211481883291238e-06" rpy="0 0 0"/>
+    <mass value="2.5196586015002698"/>
+    <inertia ixx="0.036597" iyy="0.000747" izz="0.036642" ixy="-0.00048" iyz="-2e-06" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0045 -0.035737 -0.126223" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0045 -0.035737 -0.126223" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="q3_1">
+  <inertial>
+    <origin xyz="-0.026292965945851884 0.08156450403034149 3.816233883152664e-06" rpy="0 0 0"/>
+    <mass value="1.1178385165580391"/>
+    <inertia ixx="0.009883" iyy="0.000903" izz="0.010502" ixy="0.001835" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.0175 -0.425737 -0.12624" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.0175 -0.425737 -0.12624" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q3_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="q4_1">
+  <inertial>
+    <origin xyz="-0.02610053974454684 0.19019012678385883 7.778900701443936e-06" rpy="0 0 0"/>
+    <mass value="2.3634814905972625"/>
+    <inertia ixx="0.017319" iyy="0.002243" izz="0.017344" ixy="0.00018" iyz="-1e-06" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.0555 -0.569737 -0.126247" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.0555 -0.569737 -0.126247" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q4_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="q5_1">
+  <inertial>
+    <origin xyz="2.9004576518332215e-15 0.1604149425810586 7.175376755985674e-06" rpy="0 0 0"/>
+    <mass value="1.8115927533864018"/>
+    <inertia ixx="0.012478" iyy="0.001143" izz="0.012478" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.082 -0.654737 -0.12625" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.082 -0.654737 -0.12625" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q5_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="q6_1">
+  <inertial>
+    <origin xyz="4.3576253716537394e-15 0.042295913006092034 1.7662381922300963e-06" rpy="0 0 0"/>
+    <mass value="1.5169719326279612"/>
+    <inertia ixx="0.001215" iyy="0.001083" izz="0.001291" ixy="0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.082 -0.924737 -0.126262" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.082 -0.924737 -0.126262" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://VL_description/meshes/q6_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rígida1" type="fixed">
+  <origin xyz="0.0 0.0 0.07" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="Componente5_1"/>
+</joint>
+
+<joint name="Revolución2" type="revolute">
+  <origin xyz="0.0 0.0 0.02" rpy="0 0 0"/>
+  <parent link="Componente5_1"/>
+  <child link="q1_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolución3" type="revolute">
+  <origin xyz="-0.0045 0.035737 0.036223" rpy="0 0 0"/>
+  <parent link="q1_1"/>
+  <child link="q2_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="3.141593" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolución4" type="revolute">
+  <origin xyz="0.022 0.39 1.7e-05" rpy="0 0 0"/>
+  <parent link="q2_1"/>
+  <child link="q3_1"/>
+  <axis xyz="-0.0 -1.0 -4.3e-05"/>
+  <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolución5" type="revolute">
+  <origin xyz="-0.073 0.144 7e-06" rpy="0 0 0"/>
+  <parent link="q3_1"/>
+  <child link="q4_1"/>
+  <axis xyz="-1.0 0.0 -0.0"/>
+  <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Corredera6" type="prismatic">
+  <origin xyz="-0.0265 0.085 3e-06" rpy="0 0 0"/>
+  <parent link="q4_1"/>
+  <child link="q5_1"/>
+  <axis xyz="0.0 1.0 4.3e-05"/>
+  <limit upper="0.24" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolución7" type="revolute">
+  <origin xyz="0.0 0.27 1.2e-05" rpy="0 0 0"/>
+  <parent link="q5_1"/>
+  <child link="q6_1"/>
+  <axis xyz="-0.0 -1.0 -4.3e-05"/>
+  <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
+</joint>
+
+</robot>
