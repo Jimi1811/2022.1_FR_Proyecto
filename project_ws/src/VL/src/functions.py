@@ -50,7 +50,7 @@ def dh(d, theta, a, alpha):
 # ----------------------------------
 # Cinematica directa
 
-def VL_fkine(q):
+def fkine(q):
 
     """
     Calcular la cinematica directa del robot UR5 dados sus valores articulares. 
@@ -79,7 +79,7 @@ def jacobian_position(q):
     # Crear una matriz 3x6
     J = np.zeros((3, 6))
     # Transformacion homogenea inicial (usando q)
-    To = VL_fkine(q)
+    To = fkine(q)
     To = To[0:3, -1:] # vector posicion
 
     # Iteracion para la derivada de cada columna
@@ -89,7 +89,7 @@ def jacobian_position(q):
         # Incrementar la articulacion i-esima usando un delta
         dq[i] = dq[i]+delta
         # Transformacion homogenea luego del incremento (q+delta)
-        T = VL_fkine(dq)
+        T = fkine(dq)
         T = T[0:3, -1:] # vector posicion
         # Aproximacion del Jacobiano de posicion usando diferencias finitas
         Jq = 1/delta*(T-To)
@@ -100,7 +100,7 @@ def jacobian_position(q):
 # ----------------------------------
 # Cinematica inversa
 
-def VL_ikine(xdes, q0):
+def ikine(xdes, q0):
     # Error
     epsilon = 0.001
     # Maximas iteraciones
@@ -112,7 +112,7 @@ def VL_ikine(xdes, q0):
     # Almacenamiento del error
     ee = []
     # Transformacion homogenea (usando q)
-    To = VL_fkine(q)
+    To = fkine(q)
     To = To[0:3, 3] # vector posicion
     # Resetear cuando se llega a la cantidad maxima de iteraciones
     restart = True
@@ -129,7 +129,7 @@ def VL_ikine(xdes, q0):
             # q_k+1
             q = q + np.dot(J,e)
             # Nueva mtransformada homogenea
-            To = VL_fkine(q)
+            To = fkine(q)
             To = To[0:3, 3] # vector posicion
 
             # Norma del error

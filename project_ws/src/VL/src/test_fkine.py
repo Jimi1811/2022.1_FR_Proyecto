@@ -5,8 +5,6 @@ from sensor_msgs.msg import JointState
 from markers import *
 from functions import *
 
-import numpy as np
-
 rospy.init_node("testForwardKinematics")
 pub = rospy.Publisher('joint_states', JointState, queue_size=1)
 bmarker = BallMarker(color['GREEN'])
@@ -17,7 +15,7 @@ jnames = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint','wrist_1_jo
 q = [0, 0, 0, 0, 0, 0]
 
 # End effector with respect to the base
-T = VL_fkine(q)
+T = fkine(q)
 print( np.round(T, 3) )
 bmarker.position(T)
 
