@@ -145,3 +145,109 @@ def ikine(xdes, q0):
                 print("Error en la iteracion ", i, ": ", enorm)
             restart = True
     return q
+
+# -------------------------------
+# Control por cinematica diferencial
+
+# Jacobiano de posicion y orientacion como cuaternion
+def jacobian_pose(q, delta):
+    """
+    Jacobiano analitico para la posicion y orientacion (usando un
+    cuaternion). Retorna una matriz de 7x6 y toma como entrada el vector de
+    configuracion articular q=[q1, q2, q3, q4, q5, q6]
+    
+    """
+ 
+    J = np.zeros((7,6))
+    # Implementar este Jacobiano aqui
+    To = fkine(q)
+    x0 = TF2xyzquat(To)
+ 
+    # Iteracion para la derivada de cada columna
+    for i in range(6):
+        # Copiar la configuracion articular inicial
+        dq = copy(q)
+        # Incrementar la articulacion i-esima usando un delta
+        dq[i] = dq[i]+delta
+        # Transformacion homogenea luego del incremento (q+delta)
+        T = fkine(dq)
+        x = TF2xyzquat(T)
+        # Aproximacion del Jacobiano de posicion usando diferencias finitas
+        Jq = 1/delta*(x-x0)
+ 
+        J[0, i:i+1] = Jq[0]
+        J[1, i:i+1] = Jq[1]
+        J[2, i:i+1] = Jq[2]
+        J[3, i:i+1] = Jq[3]
+        J[4, i:i+1] = Jq[4]
+        J[5, i:i+1] = Jq[5]
+        J[6, i:i+1] = Jq[6]
+ 
+    return J
+
+# Conversion de matriz de rotacion a cuaternion
+def rot2quat(R):
+    """
+    Convertir una matriz de rotacion en un cuaternion
+
+    Entrada:
+      R -- Matriz de rotacion
+    Salida:
+      Q -- Cuaternion [ew, ex, ey, ez]
+
+    """
+    dEpsilon = 1e-6
+    quat = 4*[0.,]
+
+    quat[0] = 0.5*np.sqrt(R[0,0]+R[1,1]+R[2,2]+1.0)
+
+    if ( np.fabs(R[0,0]-R[1,1]-R[2,2]+1.0) < dEpsilon ):
+        quat[1] = 0.0
+    else:
+        quat[1] = 0.5*np.sign(R[2,1]-R[1,2])*np.sqrt(R[0,0]-R[1,1]-R[2,2]+1.0)
+
+    if ( np.fabs(R[1,1]-R[2,2]-R[0,0]+1.0) < dEpsilon ):
+        quat[2] = 0.0
+    else:
+        quat[2] = 0.5*np.sign(R[0,2]-R[2,0])*np.sqrt(R[1,1]-R[2,2]-R[0,0]+1.0)
+
+    if ( np.fabs(R[2,2]-R[0,0]-R[1,1]+1.0) < dEpsilon ):
+        quat[3] = 0.0
+    else:
+        quat[3] = 0.5*np.sign(R[1,0]-R[0,1])*np.sqrt(R[2,2]-R[0,0]-R[1,1]+1.0)
+
+    return np.array(quat)
+
+# Conversion de matriz T a vector con possicion y cuaternion
+def TF2xyzquat(T):
+    """
+    Convert a homogeneous transformation matrix into the a vector containing the
+    pose of the robot.
+
+    Input:
+      T -- A homogeneous transformation
+    Output:
+      X -- A pose vector in the format [x y z ew ex ey ez], donde la first part
+           is Cartesian coordinates and the last part is a quaternion
+    """
+    quat = rot2quat(T[0:3,0:3])
+    res = [T[0,3], T[1,3], T[2,3], quat[0], quat[1], quat[2], quat[3]]
+    return np.array(res)
+
+# Conversion de matriz antrisimetrica a de rotacion
+def skew(w):
+    R = np.zeros([3,3])
+    R[0,1] = -w[2]; R[0,2] = w[1]
+    R[1,0] = w[2];  R[1,2] = -w[0]
+    R[2,0] = -w[1]; R[2,1] = w[0]
+    return R
+ 
+# Matriz de rotacion R a partir de Q
+def Q_R(Q):
+    w = Q[0]; ex = Q[1]; ey = Q[2]; ez = Q[3]
+    R = np.array([
+        [2*(w**2+ex**2)-1,   2*(ex*ey-w*ez),    2*(ex*ez+w*ey)],
+        [  2*(ex*ey+w*ez), 2*(w**2+ey**2)-1,    2*(ey*ez-w*ex)],
+        [  2*(ex*ez-w*ey),   2*(ey*ez+w*ex),    2*(w**2+ez**2)-1]
+    ])
+    return R

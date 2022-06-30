@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import time
-import roslib; roslib.load_manifest('ur_driver')
+# import roslib; roslib.load_manifest('ur_driver')
 import rospy
 import actionlib
 from control_msgs.msg import *
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     Q0 = [0.0, 0, 0, 0, 0, 0.0]
     q = [0, 0, 0, 0, 0, 0]
  
-    T = fkine_ur5(Q0)
+    T = fkine(Q0)
     xdes = T[0:3,3]
  
     deltax = [0, 0, 0]
