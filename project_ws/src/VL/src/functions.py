@@ -144,7 +144,7 @@ def ikine(xdes, q0):
                 print("Iteracion se repite")
                 print("Error en la iteracion ", i, ": ", enorm)
             restart = True
-    return q
+    return q,ee 
 
 # -------------------------------
 # Control por cinematica diferencial

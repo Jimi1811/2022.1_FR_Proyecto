@@ -9,6 +9,9 @@ from functions import *
 rospy.init_node("testInvKine")
 pub = rospy.Publisher('joint_states', JointState, queue_size=1000)
 
+# Files for the logs
+errores = open("/tmp/ikine_error.txt", "w")                
+
 bmarker      = BallMarker(color['RED'])
 bmarker_des  = BallMarker(color['GREEN'])
 
@@ -20,7 +23,14 @@ xd = np.array([0.8, 0.1, 0])
 # Initial configuration
 q0 = np.array([0.0, 0, 0, 0, 0, 0])
 # Inverse kinematics
-q = ikine(xd, q0)
+q,ee = ikine(xd, q0)
+
+for i in range(np.size(ee))
+    # Log values                                                      
+    errores.write(str(ee[0])+'\n')
+   
+# Log values                                                      
+fxcurrent.write(str(x[0])+' '+str(x[1]) +' '+str(x[2])+'\n')
 
 # Resulting position (end effector with respect to the base link)
 T = fkine(q)
@@ -51,3 +61,5 @@ while not rospy.is_shutdown():
     bmarker_des.publish()
     # Wait for the next iteration
     rate.sleep()
+
+errores.close()

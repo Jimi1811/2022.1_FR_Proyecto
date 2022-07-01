@@ -96,7 +96,7 @@ if __name__ == '__main__':
             print('Largo maximo alcanzado')
  
         if (deltax != [0, 0, 0]):
-            q = ikine(xdes,q0)
+            q,ee = ikine(xdes,q0)
             q0 = q
             deltax = [0, 0, 0]
  

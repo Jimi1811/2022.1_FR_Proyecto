@@ -16,6 +16,10 @@ rospy.init_node("testKineControlPose")
 print('starting motion ... ')
 # Publisher: publish to the joint_states topic
 pub = rospy.Publisher('joint_states', JointState, queue_size=1000)
+# Files for the logs
+fxcurrent = open("/tmp/diffkine_PR_xcurrent.txt", "w")                
+fxdesired = open("/tmp/diffkine_PR_xdesired.txt", "w")
+fq = open("/tmp/q.txt", "w")
 # Markers for the current and desired positions
 bmarker_current  = FrameMarker()
 bmarker_desired = FrameMarker(0.5)
@@ -127,6 +131,14 @@ while not rospy.is_shutdown():
     T = fkine(q)
     T_co = np.array([[0,1,0],[1,0,0],[0,0,-1]])
     x = TF2xyzquat(T)
+
+    # -----------------------------
+ 
+    # Log values                                                      
+    fxcurrent.write(str(x[0])+' '+str(x[1]) +' '+str(x[2])+' '+str(x[3])+' '+str(x[4])+' '+str(x[5])+' '+str(x[6])+'\n')
+    fxdesired.write(str(xd[0])+' '+str(xd[1]) +' '+str(xd[2])+' '+str(xd[3])+' '+str(xd[4])+' '+str(xd[5])+' '+str(xd[6])+'\n')
+    fq.write(str(q[0])+" "+str(q[1])+" "+str(q[2])+" "+str(q[3])+" "+
+             str(q[4])+" "+str(q[5])+"\n")
     # Publish the message
     jstate.position = q
     pub.publish(jstate)
@@ -134,3 +146,8 @@ while not rospy.is_shutdown():
     bmarker_current.setPose(x)
     # Wait for the next iteration
     rate.sleep()
+
+print('ending motion ...')
+fxcurrent.close()
+fxdesired.close()
+fq.close()

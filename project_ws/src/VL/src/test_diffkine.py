@@ -14,8 +14,8 @@ print('starting motion ... ')
 # Publisher: publish to the joint_states topic
 pub = rospy.Publisher('joint_states', JointState, queue_size=10)
 # Files for the logs
-fxcurrent = open("/tmp/xcurrent.txt", "w")                
-fxdesired = open("/tmp/xdesired.txt", "w")
+fxcurrent = open("/tmp/diffkine_P_xcurrent.txt", "w")                
+fxdesired = open("/tmp/diffkine_P_xdesired.txt", "w")
 fq = open("/tmp/q.txt", "w")
  
 # Markers for the current and desired positions
