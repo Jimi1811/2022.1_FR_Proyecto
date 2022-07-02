@@ -25,13 +25,10 @@ q0 = np.array([0.0, 0, 0, 0, 0, 0])
 # Inverse kinematics
 q,ee = ikine(xd, q0)
 
-for i in range(np.size(ee))
+for i in range(np.size(ee)):
     # Log values                                                      
-    errores.write(str(ee[0])+'\n')
+    errores.write(str(ee[i])+'\n')
    
-# Log values                                                      
-fxcurrent.write(str(x[0])+' '+str(x[1]) +' '+str(x[2])+'\n')
-
 # Resulting position (end effector with respect to the base link)
 T = fkine(q)
 print('Obtained value:\n', np.round(T,3))
