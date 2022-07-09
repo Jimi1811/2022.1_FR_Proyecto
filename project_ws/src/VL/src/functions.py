@@ -120,6 +120,8 @@ def ikine(xdes, q0):
 
     while restart:
         for i in range(max_iter):
+            if(q[4]<0):
+                q[4]=0
             # Hacer el for 1 vez
             restart = False
             # Pseudo-inversa del jacobiano

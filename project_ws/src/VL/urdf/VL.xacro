@@ -183,7 +183,7 @@
   <parent link="Componente5_1"/>
   <child link="q1_1"/>
   <axis xyz="0.0 0.0 1.0"/>
-  <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
+  <limit upper="3.141593" lower="-3.141593" effort="100" velocity="100"/>
 </joint>
 
 <joint name="shoulder_q2" type="revolute">
@@ -199,7 +199,7 @@
   <parent link="q2_1"/>
   <child link="q3_1"/>
   <axis xyz="-0.0 -1.0 -4.3e-05"/>
-  <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
+  <limit upper="3.141593" lower="-3.141593" effort="100" velocity="100"/>
 </joint>
 
 <joint name="elbow_q4" type="revolute">
@@ -207,7 +207,7 @@
   <parent link="q3_1"/>
   <child link="q4_1"/>
   <axis xyz="-1.0 0.0 -0.0"/>
-  <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
+  <limit upper="3.141593" lower="-3.141593" effort="100" velocity="100"/>
 </joint>
 
 <joint name="slider_q5" type="prismatic">
@@ -215,7 +215,7 @@
   <parent link="q4_1"/>
   <child link="q5_1"/>
   <axis xyz="0.0 1.0 4.3e-05"/>
-  <limit upper="0.24" lower="0.0" effort="100" velocity="100"/>
+  <limit upper="0.24" lower="0.00" effort="100" velocity="100"/>
 </joint>
 
 <joint name="wrist_q6" type="revolute">
@@ -223,7 +223,7 @@
   <parent link="q5_1"/>
   <child link="q6_1"/>
   <axis xyz="-0.0 -1.0 -4.3e-05"/>
-  <limit upper="6.283185" lower="0.0" effort="100" velocity="100"/>
+  <limit upper="3.141593" lower="-3.141593" effort="100" velocity="100"/>
 </joint>
 
 </robot>

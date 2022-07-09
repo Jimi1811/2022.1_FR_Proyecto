@@ -19,7 +19,7 @@ bmarker_des  = BallMarker(color['GREEN'])
 jnames = ['waist_q1', 'shoulder_q2', 'revolution_q3','elbow_q4', 'slider_q5', 'wrist_q6']
 
 # Desired position
-xd = np.array([0.8, 0.1, 0])
+xd = np.array([0, 0.1, 0.3])
 # Initial configuration
 q0 = np.array([0.0, 0, 0, 0, 0, 0])
 # Inverse kinematics

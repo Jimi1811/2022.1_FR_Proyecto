@@ -26,7 +26,7 @@ bmarker_desired = BallMarker(color['GREEN'])
 jnames = ['waist_q1', 'shoulder_q2', 'revolution_q3','elbow_q4', 'slider_q5', 'wrist_q6']
  
 # Desired position
-xd = np.array([0, 0, 0.9])
+xd = np.array([0.5, 0.2, 0.4])
 # Initial configuration
 q0  = np.array([0, 0, 0, 0, 0, 0])
  
@@ -35,7 +35,7 @@ T = fkine(q0)
 x0 = T[0:3,3]
  
 epsilon = 0.0001
-k = 0.5
+k = 3
 count = 0
  
 # Red marker shows the achieved position
@@ -60,6 +60,8 @@ rate = rospy.Rate(freq)
 q = copy(q0)
 # Main loop
 while not rospy.is_shutdown():
+    if(q[4]<0):
+        q[4]=0
     # Current time (needed for ROS)
     jstate.header.stamp = rospy.Time.now()
     # Kinematic control law for position (complete here)
