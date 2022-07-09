@@ -21,9 +21,9 @@ Proyecto de curso Fundamentos de Robótica 2022-1
   
   5. Para correr control dinámico usando RBDL, al igual que source:
       ```
-      $ export LD_LIBRARY_PATH=/home/user/lab_ws/install/lib: $ LD_LIBRARY_PATH
+      $ export LD_LIBRARY_PATH=/home/user/lab_ws/install/lib:$LD_LIBRARY_PATH
       
-      $ export PYTHONPATH=/home/user/lab_ws/install/lib/python2.7/site-packages: $ PYTHONPATH
+      $ export PYTHONPATH=/home/user/lab_ws/install/lib/python2.7/site-packages:$PYTHONPATH
 
 * Para iniciar sesión y subir sus avances:
     ```
