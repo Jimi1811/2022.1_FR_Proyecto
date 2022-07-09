@@ -54,7 +54,7 @@ jstate.position = q
 pub.publish(jstate)
  
 # Modelo RBDL
-modelo = rbdl.loadModel('../urdf/ur5_robot.urdf')
+modelo = rbdl.loadModel('../urdf/VL.urdf')
 ndof   = modelo.q_size  # Grados de libertad
 zeros  = np.zeros(ndof)  # Vector de ceros
  
